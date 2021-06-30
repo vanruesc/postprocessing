@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/images/smaa/SMAAAreaImageData.js | postprocessing</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A post processing library that provides the means to implement image filter effects for three.js."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="postprocessing"><meta property="twitter:description" content="A post processing library that provides the means to implement image filter effects for three.js."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/vanruesc/postprocessing.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/EffectComposer.js~EffectComposer.html">EffectComposer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/OverrideMaterialManager.js~OverrideMaterialManager.html">OverrideMaterialManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Resizer.js~Resizer.html">Resizer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Selection.js~Selection.html">Selection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/core/Disposable.js~Disposable.html">Disposable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/core/Initializable.js~Initializable.html">Initializable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/core/Resizable.js~Resizable.html">Resizable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ColorChannel">ColorChannel</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#effects">effects</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/BloomEffect.js~BloomEffect.html">BloomEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/BokehEffect.js~BokehEffect.html">BokehEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/BrightnessContrastEffect.js~BrightnessContrastEffect.html">BrightnessContrastEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ChromaticAberrationEffect.js~ChromaticAberrationEffect.html">ChromaticAberrationEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ColorAverageEffect.js~ColorAverageEffect.html">ColorAverageEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ColorDepthEffect.js~ColorDepthEffect.html">ColorDepthEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/DepthEffect.js~DepthEffect.html">DepthEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/DepthOfFieldEffect.js~DepthOfFieldEffect.html">DepthOfFieldEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/DotScreenEffect.js~DotScreenEffect.html">DotScreenEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/Effect.js~Effect.html">Effect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/GammaCorrectionEffect.js~GammaCorrectionEffect.html">GammaCorrectionEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/GlitchEffect.js~GlitchEffect.html">GlitchEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/GodRaysEffect.js~GodRaysEffect.html">GodRaysEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/GridEffect.js~GridEffect.html">GridEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/HueSaturationEffect.js~HueSaturationEffect.html">HueSaturationEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/LUTEffect.js~LUTEffect.html">LUTEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/NoiseEffect.js~NoiseEffect.html">NoiseEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/OutlineEffect.js~OutlineEffect.html">OutlineEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/PixelationEffect.js~PixelationEffect.html">PixelationEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/RealisticBokehEffect.js~RealisticBokehEffect.html">RealisticBokehEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/SMAAEffect.js~SMAAEffect.html">SMAAEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/SSAOEffect.js~SSAOEffect.html">SSAOEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ScanlineEffect.js~ScanlineEffect.html">ScanlineEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/SelectiveBloomEffect.js~SelectiveBloomEffect.html">SelectiveBloomEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/SepiaEffect.js~SepiaEffect.html">SepiaEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ShockWaveEffect.js~ShockWaveEffect.html">ShockWaveEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/TextureEffect.js~TextureEffect.html">TextureEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ToneMappingEffect.js~ToneMappingEffect.html">ToneMappingEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/VignetteEffect.js~VignetteEffect.html">VignetteEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EffectAttribute">EffectAttribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-WebGLExtension">WebGLExtension</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GlitchMode">GlitchMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SMAAPreset">SMAAPreset</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ToneMappingMode">ToneMappingMode</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#effects-blending">effects/blending</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/blending/BlendMode.js~BlendMode.html">BlendMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BlendFunction">BlendFunction</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#images">images</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/RawImageData.js~RawImageData.html">RawImageData</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#images-lut">images/lut</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/lut/TetrahedralUpscaler.js~TetrahedralUpscaler.html">TetrahedralUpscaler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LUTOperation">LUTOperation</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#images-smaa">images/smaa</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/smaa/SMAAAreaImageData.js~SMAAAreaImageData.html">SMAAAreaImageData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/smaa/SMAAImageGenerator.js~SMAAImageGenerator.html">SMAAImageGenerator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/smaa/SMAASearchImageData.js~SMAASearchImageData.html">SMAASearchImageData</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#images-textures">images/textures</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/textures/LookupTexture3D.js~LookupTexture3D.html">LookupTexture3D</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/textures/NoiseTexture.js~NoiseTexture.html">NoiseTexture</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#loaders">loaders</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loaders/LUT3dlLoader.js~LUT3dlLoader.html">LUT3dlLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loaders/LUTCubeLoader.js~LUTCubeLoader.html">LUTCubeLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loaders/SMAAImageLoader.js~SMAAImageLoader.html">SMAAImageLoader</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#materials">materials</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/AdaptiveLuminanceMaterial.js~AdaptiveLuminanceMaterial.html">AdaptiveLuminanceMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/BokehMaterial.js~BokehMaterial.html">BokehMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/CircleOfConfusionMaterial.js~CircleOfConfusionMaterial.html">CircleOfConfusionMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/ColorEdgesMaterial.js~ColorEdgesMaterial.html">ColorEdgesMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/ConvolutionMaterial.js~ConvolutionMaterial.html">ConvolutionMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/CopyMaterial.js~CopyMaterial.html">CopyMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/DepthComparisonMaterial.js~DepthComparisonMaterial.html">DepthComparisonMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/DepthCopyMaterial.js~DepthCopyMaterial.html">DepthCopyMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/DepthDownsamplingMaterial.js~DepthDownsamplingMaterial.html">DepthDownsamplingMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/DepthMaskMaterial.js~DepthMaskMaterial.html">DepthMaskMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/EdgeDetectionMaterial.js~EdgeDetectionMaterial.html">EdgeDetectionMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/EffectMaterial.js~EffectMaterial.html">EffectMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/GodRaysMaterial.js~GodRaysMaterial.html">GodRaysMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/LuminanceMaterial.js~LuminanceMaterial.html">LuminanceMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/MaskMaterial.js~MaskMaterial.html">MaskMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/OutlineMaterial.js~OutlineMaterial.html">OutlineMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/SMAAWeightsMaterial.js~SMAAWeightsMaterial.html">SMAAWeightsMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/SSAOMaterial.js~SSAOMaterial.html">SSAOMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-KernelSize">KernelSize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DepthCopyMode">DepthCopyMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EdgeDetectionMode">EdgeDetectionMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PredicationMode">PredicationMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Section">Section</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MaskFunction">MaskFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OutlineEdgesMaterial">OutlineEdgesMaterial</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#passes">passes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/AdaptiveLuminancePass.js~AdaptiveLuminancePass.html">AdaptiveLuminancePass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/BlurPass.js~BlurPass.html">BlurPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/ClearMaskPass.js~ClearMaskPass.html">ClearMaskPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/ClearPass.js~ClearPass.html">ClearPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/DepthDownsamplingPass.js~DepthDownsamplingPass.html">DepthDownsamplingPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/DepthPass.js~DepthPass.html">DepthPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/DepthPickingPass.js~DepthPickingPass.html">DepthPickingPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/DepthSavePass.js~DepthSavePass.html">DepthSavePass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/EffectPass.js~EffectPass.html">EffectPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/LambdaPass.js~LambdaPass.html">LambdaPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/LuminancePass.js~LuminancePass.html">LuminancePass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/MaskPass.js~MaskPass.html">MaskPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/NormalPass.js~NormalPass.html">NormalPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/Pass.js~Pass.html">Pass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/RenderPass.js~RenderPass.html">RenderPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/SavePass.js~SavePass.html">SavePass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/ShaderPass.js~ShaderPass.html">ShaderPass</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/images/smaa/SMAAAreaImageData.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { RawImageData } from &quot;../RawImageData&quot;;
+
+/**
+ * An 2D area, described by lower and upper bounds.
+ *
+ * @type {Float32Array[]}
+ * @private
+ */
+
+const area = [
+	new Float32Array(2),
+	new Float32Array(2)
+];
+
+/**
+ * The orthogonal texture size.
+ *
+ * @type {Number}
+ * @private
+ */
+
+const ORTHOGONAL_SIZE = 16;
+
+/**
+ * The diagonal texture size.
+ *
+ * @type {Number}
+ * @private
+ */
+
+const DIAGONAL_SIZE = 20;
+
+/**
+ * The number of samples for calculating areas in the diagonal textures.
+ * Diagonal areas are calculated using brute force sampling.
+ *
+ * @type {Number}
+ * @private
+ */
+
+const DIAGONAL_SAMPLES = 30;
+
+/**
+ * The maximum distance for smoothing U-shapes.
+ *
+ * @type {Number}
+ * @private
+ */
+
+const SMOOTH_MAX_DISTANCE = 32;
+
+/**
+ * Subsampling offsets for orthogonal areas.
+ *
+ * @type {Float32Array}
+ * @private
+ */
+
+const orthogonalSubsamplingOffsets = new Float32Array([
+	0.0, -0.25, 0.25, -0.125, 0.125, -0.375, 0.375
+]);
+
+/**
+ * Subsampling offset pairs for diagonal areas.
+ *
+ * @type {Float32Array[]}
+ * @private
+ */
+
+const diagonalSubsamplingOffsets = [
+
+	new Float32Array([0.0, 0.0]),
+	new Float32Array([0.25, -0.25]),
+	new Float32Array([-0.25, 0.25]),
+	new Float32Array([0.125, -0.125]),
+	new Float32Array([-0.125, 0.125])
+
+];
+
+/**
+ * Orthogonal pattern positioning coordinates.
+ *
+ * Used for placing each pattern subtexture into a specific spot.
+ *
+ * @type {Uint8Array[]}
+ * @private
+ */
+
+const orthogonalEdges = [
+
+	new Uint8Array([0, 0]),
+	new Uint8Array([3, 0]),
+	new Uint8Array([0, 3]),
+	new Uint8Array([3, 3]),
+
+	new Uint8Array([1, 0]),
+	new Uint8Array([4, 0]),
+	new Uint8Array([1, 3]),
+	new Uint8Array([4, 3]),
+
+	new Uint8Array([0, 1]),
+	new Uint8Array([3, 1]),
+	new Uint8Array([0, 4]),
+	new Uint8Array([3, 4]),
+
+	new Uint8Array([1, 1]),
+	new Uint8Array([4, 1]),
+	new Uint8Array([1, 4]),
+	new Uint8Array([4, 4])
+
+];
+
+/**
+ * Diagonal pattern positioning coordinates.
+ *
+ * Used for placing each pattern subtexture into a specific spot.
+ *
+ * @type {Uint8Array[]}
+ * @private
+ */
+
+const diagonalEdges = [
+
+	new Uint8Array([0, 0]),
+	new Uint8Array([1, 0]),
+	new Uint8Array([0, 2]),
+	new Uint8Array([1, 2]),
+
+	new Uint8Array([2, 0]),
+	new Uint8Array([3, 0]),
+	new Uint8Array([2, 2]),
+	new Uint8Array([3, 2]),
+
+	new Uint8Array([0, 1]),
+	new Uint8Array([1, 1]),
+	new Uint8Array([0, 3]),
+	new Uint8Array([1, 3]),
+
+	new Uint8Array([2, 1]),
+	new Uint8Array([3, 1]),
+	new Uint8Array([2, 3]),
+	new Uint8Array([3, 3])
+
+];
+
+/**
+ * Linearly interpolates between two values.
+ *
+ * @private
+ * @param {Number} a - The initial value.
+ * @param {Number} b - The target value.
+ * @param {Number} p - The interpolation value.
+ * @return {Number} The interpolated value.
+ */
+
+function lerp(a, b, p) {
+
+	return a + (b - a) * p;
+
+}
+
+/**
+ * Clamps a value to the range [0, 1].
+ *
+ * @private
+ * @param {Number} a - The value.
+ * @return {Number} The saturated value.
+ */
+
+function saturate(a) {
+
+	return Math.min(Math.max(a, 0.0), 1.0);
+
+}
+
+/**
+ * A smoothing function for small U-patterns.
+ *
+ * @private
+ * @param {Number} d - A smoothing factor.
+ */
+
+function smoothArea(d) {
+
+	const a1 = area[0];
+	const a2 = area[1];
+
+	const b1X = Math.sqrt(a1[0] * 2.0) * 0.5;
+	const b1Y = Math.sqrt(a1[1] * 2.0) * 0.5;
+	const b2X = Math.sqrt(a2[0] * 2.0) * 0.5;
+	const b2Y = Math.sqrt(a2[1] * 2.0) * 0.5;
+
+	const p = saturate(d / SMOOTH_MAX_DISTANCE);
+
+	a1[0] = lerp(b1X, a1[0], p);
+	a1[1] = lerp(b1Y, a1[1], p);
+	a2[0] = lerp(b2X, a2[0], p);
+	a2[1] = lerp(b2Y, a2[1], p);
+
+}
+
+/**
+ * Calculates the area under the line p1 -&gt; p2, for the pixels (x, x + 1).
+ *
+ * @private
+ * @param {Number} p1X - The starting point of the line, X-component.
+ * @param {Number} p1Y - The starting point of the line, Y-component.
+ * @param {Number} p2X - The ending point of the line, X-component.
+ * @param {Number} p2Y - The ending point of the line, Y-component.
+ * @param {Number} x - The pixel index.
+ * @param {Float32Array} result - A target tupel to store the area in.
+ * @return {Float32Array} The area.
+ */
+
+function calculateOrthogonalArea(p1X, p1Y, p2X, p2Y, x, result) {
+
+	const dX = p2X - p1X;
+	const dY = p2Y - p1Y;
+
+	const x1 = x;
+	const x2 = x + 1.0;
+
+	const y1 = p1Y + dY * (x1 - p1X) / dX;
+	const y2 = p1Y + dY * (x2 - p1X) / dX;
+
+	// Check if x is inside the area.
+	if((x1 &gt;= p1X &amp;&amp; x1 &lt; p2X) || (x2 &gt; p1X &amp;&amp; x2 &lt;= p2X)) {
+
+		// Check if this is a trapezoid.
+		if(Math.sign(y1) === Math.sign(y2) || Math.abs(y1) &lt; 1e-4 || Math.abs(y2) &lt; 1e-4) {
+
+			const a = (y1 + y2) / 2.0;
+
+			if(a &lt; 0.0) {
+
+				result[0] = Math.abs(a);
+				result[1] = 0.0;
+
+			} else {
+
+				result[0] = 0.0;
+				result[1] = Math.abs(a);
+
+			}
+
+		} else {
+
+			// Two triangles.
+			const t = -p1Y * dX / dY + p1X;
+			const tInt = Math.trunc(t);
+
+			const a1 = (t &gt; p1X) ? y1 * (t - tInt) / 2.0 : 0.0;
+			const a2 = (t &lt; p2X) ? y2 * (1.0 - (t - tInt)) / 2.0 : 0.0;
+
+			const a = (Math.abs(a1) &gt; Math.abs(a2)) ? a1 : -a2;
+
+			if(a &lt; 0.0) {
+
+				result[0] = Math.abs(a1);
+				result[1] = Math.abs(a2);
+
+			} else {
+
+				result[0] = Math.abs(a2);
+				result[1] = Math.abs(a1);
+
+			}
+
+		}
+
+	} else {
+
+		result[0] = 0.0;
+		result[1] = 0.0;
+
+	}
+
+	return result;
+
+}
+
+/**
+ * Calculates the area for a given pattern and distances to the left and to the
+ * right, biased by an offset.
+ *
+ * @private
+ * @param {Number} pattern - A pattern index.
+ * @param {Number} left - The left distance.
+ * @param {Number} right - The right distance.
+ * @param {Number} offset - An offset.
+ * @param {Float32Array} result - A target tupel to store the area in.
+ * @return {Float32Array} The orthogonal area.
+ */
+
+function calculateOrthogonalAreaForPattern(pattern, left, right, offset, result) {
+
+	const a1 = area[0];
+	const a2 = area[1];
+
+	/* o1           |
+	 *      .-------&#xB4;
+	 * o2   |
+	 *
+	 *      &lt;---d---&gt;
+	 */
+
+	const o1 = 0.5 + offset;
+	const o2 = 0.5 + offset - 1.0;
+	const d = left + right + 1;
+
+	switch(pattern) {
+
+		case 0: {
+
+			//    ------
+
+			result[0] = 0.0;
+			result[1] = 0.0;
+
+			break;
+
+		}
+
+		case 1: {
+
+			/*   .------
+			 *   |
+			 *
+			 * The offset is only applied to L patterns in the crossing edge side to
+			 * make it converge with the unfiltered pattern 0.
+			 * The pattern 0 must not be filtered to avoid artifacts.
+			 */
+
+			if(left &lt;= right) {
+
+				calculateOrthogonalArea(0.0, o2, d / 2.0, 0.0, left, result);
+
+			} else {
+
+				result[0] = 0.0;
+				result[1] = 0.0;
+
+			}
+
+			break;
+
+		}
+
+		case 2: {
+
+			/*    ------.
+			 *          |
+			 */
+
+			if(left &gt;= right) {
+
+				calculateOrthogonalArea(d / 2.0, 0.0, d, o2, left, result);
+
+			} else {
+
+				result[0] = 0.0;
+				result[1] = 0.0;
+
+			}
+
+			break;
+
+		}
+
+		case 3: {
+
+			/*   .------.
+			 *   |      |
+			 */
+
+			calculateOrthogonalArea(0.0, o2, d / 2.0, 0.0, left, a1);
+			calculateOrthogonalArea(d / 2.0, 0.0, d, o2, left, a2);
+
+			smoothArea(d, area);
+
+			result[0] = a1[0] + a2[0];
+			result[1] = a1[1] + a2[1];
+
+			break;
+
+		}
+
+		case 4: {
+
+			/*   |
+			 *   `------
+			 */
+
+			if(left &lt;= right) {
+
+				calculateOrthogonalArea(0.0, o1, d / 2.0, 0.0, left, result);
+
+			} else {
+
+				result[0] = 0.0;
+				result[1] = 0.0;
+
+			}
+
+			break;
+
+		}
+
+		case 5: {
+
+			/*   |
+			 *   +------
+			 *   |
+			 */
+
+			result[0] = 0.0;
+			result[1] = 0.0;
+
+			break;
+
+		}
+
+		case 6: {
+
+			/*   |
+			 *   `------.
+			 *          |
+			 *
+			 * A problem of not offseting L patterns (see above) is that for certain
+			 * max search distances, the pixels in the center of a Z pattern will
+			 * detect the full Z pattern, while the pixels in the sides will detect an
+			 * L pattern. To avoid discontinuities, the full offsetted Z
+			 * revectorization is blended with partially offsetted L patterns.
+			 */
+
+			if(Math.abs(offset) &gt; 0.0) {
+
+				calculateOrthogonalArea(0.0, o1, d, o2, left, a1);
+				calculateOrthogonalArea(0.0, o1, d / 2.0, 0.0, left, a2);
+				calculateOrthogonalArea(d / 2.0, 0.0, d, o2, left, result);
+
+				a2[0] = a2[0] + result[0];
+				a2[1] = a2[1] + result[1];
+
+				result[0] = (a1[0] + a2[0]) / 2.0;
+				result[1] = (a1[1] + a2[1]) / 2.0;
+
+			} else {
+
+				calculateOrthogonalArea(0.0, o1, d, o2, left, result);
+
+			}
+
+			break;
+
+		}
+
+		case 7: {
+
+			/*   |
+			 *   +------.
+			 *   |      |
+			 */
+
+			calculateOrthogonalArea(0.0, o1, d, o2, left, result);
+
+			break;
+
+		}
+
+		case 8: {
+
+			/*          |
+			 *    ------&#xB4;
+			 */
+
+			if(left &gt;= right) {
+
+				calculateOrthogonalArea(d / 2.0, 0.0, d, o1, left, result);
+
+			} else {
+
+				result[0] = 0.0;
+				result[1] = 0.0;
+
+			}
+
+			break;
+
+		}
+
+		case 9: {
+
+			/*          |
+			 *   .------&#xB4;
+			 *   |
+			 */
+
+			if(Math.abs(offset) &gt; 0.0) {
+
+				calculateOrthogonalArea(0.0, o2, d, o1, left, a1);
+				calculateOrthogonalArea(0.0, o2, d / 2.0, 0.0, left, a2);
+				calculateOrthogonalArea(d / 2.0, 0.0, d, o1, left, result);
+
+				a2[0] = a2[0] + result[0];
+				a2[1] = a2[1] + result[1];
+
+				result[0] = (a1[0] + a2[0]) / 2.0;
+				result[1] = (a1[1] + a2[1]) / 2.0;
+
+			} else {
+
+				calculateOrthogonalArea(0.0, o2, d, o1, left, result);
+
+			}
+
+			break;
+
+		}
+
+		case 10: {
+
+			/*          |
+			 *    ------+
+			 *          |
+			 */
+
+			result[0] = 0.0;
+			result[1] = 0.0;
+
+			break;
+
+		}
+
+		case 11: {
+
+			/*          |
+			 *   .------+
+			 *   |      |
+			 */
+
+			calculateOrthogonalArea(0.0, o2, d, o1, left, result);
+
+			break;
+
+		}
+
+		case 12: {
+
+			/*   |      |
+			 *   `------&#xB4;
+			 */
+
+			calculateOrthogonalArea(0.0, o1, d / 2.0, 0.0, left, a1);
+			calculateOrthogonalArea(d / 2.0, 0.0, d, o1, left, a2);
+
+			smoothArea(d, area);
+
+			result[0] = a1[0] + a2[0];
+			result[1] = a1[1] + a2[1];
+
+			break;
+
+		}
+
+		case 13: {
+
+			/*   |      |
+			 *   +------&#xB4;
+			 *   |
+			 */
+
+			calculateOrthogonalArea(0.0, o2, d, o1, left, result);
+
+			break;
+
+		}
+
+		case 14: {
+
+			/*   |      |
+			 *   `------+
+			 *          |
+			 */
+
+			calculateOrthogonalArea(0.0, o1, d, o2, left, result);
+
+			break;
+
+		}
+
+		case 15: {
+
+			/*   |      |
+			 *   +------+
+			 *   |      |
+			 */
+
+			result[0] = 0.0;
+			result[1] = 0.0;
+
+			break;
+
+		}
+
+	}
+
+	return result;
+
+}
+
+/**
+ * Determines whether the given pixel is inside the specified area.
+ *
+ * @private
+ * @param {Number} a1X - The lower bounds of the area, X-component.
+ * @param {Number} a1Y - The lower bounds of the area, Y-component.
+ * @param {Number} a2X - The upper bounds of the area, X-component.
+ * @param {Number} a2Y - The upper bounds of the area, Y-component.
+ * @param {Number} x - The X-coordinate.
+ * @param {Number} y - The Y-coordinate.
+ * @return {Boolean} Whether the pixel lies inside the area.
+ */
+
+function isInsideArea(a1X, a1Y, a2X, a2Y, x, y) {
+
+	let result = (a1X === a2X &amp;&amp; a1Y === a2Y);
+
+	if(!result) {
+
+		const xm = (a1X + a2X) / 2.0;
+		const ym = (a1Y + a2Y) / 2.0;
+
+		const a = a2Y - a1Y;
+		const b = a1X - a2X;
+
+		const c = a * (x - xm) + b * (y - ym);
+
+		result = (c &gt; 0.0);
+
+	}
+
+	return result;
+
+}
+
+/**
+ * Calculates the area under the line p1 -&gt; p2 for the pixel p using brute force
+ * sampling.
+ *
+ * @private
+ * @param {Number} a1X - The lower bounds of the area, X-component.
+ * @param {Number} a1Y - The lower bounds of the area, Y-component.
+ * @param {Number} a2X - The upper bounds of the area, X-component.
+ * @param {Number} a2Y - The upper bounds of the area, Y-component.
+ * @param {Number} pX - The X-coordinate.
+ * @param {Number} pY - The Y-coordinate.
+ * @return {Number} The amount of pixels inside the area relative to the total amount of sampled pixels.
+ */
+
+function calculateDiagonalAreaForPixel(a1X, a1Y, a2X, a2Y, pX, pY) {
+
+	let n = 0;
+
+	for(let y = 0; y &lt; DIAGONAL_SAMPLES; ++y) {
+
+		for(let x = 0; x &lt; DIAGONAL_SAMPLES; ++x) {
+
+			const offsetX = x / (DIAGONAL_SAMPLES - 1.0);
+			const offsetY = y / (DIAGONAL_SAMPLES - 1.0);
+
+			if(isInsideArea(a1X, a1Y, a2X, a2Y, pX + offsetX, pY + offsetY)) {
+
+				++n;
+
+			}
+
+		}
+
+	}
+
+	return n / (DIAGONAL_SAMPLES * DIAGONAL_SAMPLES);
+
+}
+
+/**
+ * Calculates the area under the line p1 -&gt; p2. This includes the pixel and its
+ * opposite.
+ *
+ * @private
+ * @param {Number} pattern - A pattern index.
+ * @param {Number} a1X - The lower bounds of the area, X-component.
+ * @param {Number} a1Y - The lower bounds of the area, Y-component.
+ * @param {Number} a2X - The upper bounds of the area, X-component.
+ * @param {Number} a2Y - The upper bounds of the area, Y-component.
+ * @param {Number} left - The left distance.
+ * @param {Float32Array} offset - An offset.
+ * @param {Float32Array} result - A target tupel to store the area in.
+ * @return {Float32Array} The area.
+ */
+
+function calculateDiagonalArea(pattern, a1X, a1Y, a2X, a2Y, left, offset, result) {
+
+	const e = diagonalEdges[pattern];
+	const e1 = e[0];
+	const e2 = e[1];
+
+	if(e1 &gt; 0) {
+
+		a1X += offset[0];
+		a1Y += offset[1];
+
+	}
+
+	if(e2 &gt; 0) {
+
+		a2X += offset[0];
+		a2Y += offset[1];
+
+	}
+
+	result[0] = 1.0 - calculateDiagonalAreaForPixel(a1X, a1Y, a2X, a2Y, 1.0 + left, 0.0 + left);
+	result[1] = calculateDiagonalAreaForPixel(a1X, a1Y, a2X, a2Y, 1.0 + left, 1.0 + left);
+
+	return result;
+
+}
+
+/**
+ * Calculates the area for a given pattern and distances to the left and to the
+ * right, biased by an offset.
+ *
+ * @private
+ * @param {Number} pattern - A pattern index.
+ * @param {Number} left - The left distance.
+ * @param {Number} right - The right distance.
+ * @param {Float32Array} offset - An offset.
+ * @param {Float32Array} result - A target tupel to store the area in.
+ * @return {Float32Array} The orthogonal area.
+ */
+
+function calculateDiagonalAreaForPattern(pattern, left, right, offset, result) {
+
+	const a1 = area[0];
+	const a2 = area[1];
+
+	const d = left + right + 1;
+
+	/* There is some Black Magic involved in the diagonal area calculations.
+	 *
+	 * Unlike orthogonal patterns, the &quot;null&quot; pattern (one without crossing edges)
+	 * must be filtered, and the ends of both the &quot;null&quot; and L patterns are not
+	 * known: L and U patterns have different endings, and the adjacent pattern is
+	 * unknown. Therefore, a blend of both possibilities is computed.
+	 */
+
+	switch(pattern) {
+
+		case 0: {
+
+			/*         .-&#xB4;
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 *   .-&#xB4;
+			 *   &#xB4;
+			 */
+
+			// First possibility.
+			calculateDiagonalArea(pattern, 1.0, 1.0, 1.0 + d, 1.0 + d, left, offset, a1);
+
+			// Second possibility.
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 0.0 + d, left, offset, a2);
+
+			// Blend both possibilities together.
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+		case 1: {
+
+			/*         .-&#xB4;
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 *   .-&#xB4;
+			 *   |
+			 *   |
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 0.0, 0.0 + d, 0.0 + d, left, offset, a1);
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 0.0 + d, left, offset, a2);
+
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+		case 2: {
+
+			/*         .----
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 *   .-&#xB4;
+			 *   &#xB4;
+			 */
+
+			calculateDiagonalArea(pattern, 0.0, 0.0, 1.0 + d, 0.0 + d, left, offset, a1);
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 0.0 + d, left, offset, a2);
+
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+		case 3: {
+
+			/*
+			 *         .----
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 *   .-&#xB4;
+			 *   |
+			 *   |
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 0.0 + d, left, offset, result);
+
+			break;
+
+		}
+
+		case 4: {
+
+			/*         .-&#xB4;
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 * ----&#xB4;
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 1.0, 0.0 + d, 0.0 + d, left, offset, a1);
+			calculateDiagonalArea(pattern, 1.0, 1.0, 1.0 + d, 0.0 + d, left, offset, a2);
+
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+		case 5: {
+
+			/*         .-&#xB4;
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 * --.-&#xB4;
+			 *   |
+			 *   |
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 1.0, 0.0 + d, 0.0 + d, left, offset, a1);
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 0.0 + d, left, offset, a2);
+
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+		case 6: {
+
+			/*         .----
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 * ----&#xB4;
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 1.0, 1.0 + d, 0.0 + d, left, offset, result);
+
+			break;
+
+		}
+
+		case 7: {
+
+			/*         .----
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 * --.-&#xB4;
+			 *   |
+			 *   |
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 1.0, 1.0 + d, 0.0 + d, left, offset, a1);
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 0.0 + d, left, offset, a2);
+
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+		case 8: {
+
+			/*         |
+			 *         |
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 *   .-&#xB4;
+			 *   &#xB4;
+			 */
+
+			calculateDiagonalArea(pattern, 0.0, 0.0, 1.0 + d, 1.0 + d, left, offset, a1);
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 1.0 + d, left, offset, a2);
+
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+		case 9: {
+
+			/*         |
+			 *         |
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 *   .-&#xB4;
+			 *   |
+			 *   |
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 1.0 + d, left, offset, result);
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 1.0 + d, left, offset, result);
+
+			break;
+
+		}
+
+		case 10: {
+
+			/*         |
+			 *         .----
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 *   .-&#xB4;
+			 *   &#xB4;
+			 */
+
+			calculateDiagonalArea(pattern, 0.0, 0.0, 1.0 + d, 1.0 + d, left, offset, a1);
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 0.0 + d, left, offset, a2);
+
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+		case 11: {
+
+			/*         |
+			 *         .----
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 *   .-&#xB4;
+			 *   |
+			 *   |
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 1.0 + d, left, offset, a1);
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 0.0 + d, left, offset, a2);
+
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+		case 12: {
+
+			/*         |
+			 *         |
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 * ----&#xB4;
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 1.0, 1.0 + d, 1.0 + d, left, offset, result);
+
+			break;
+
+		}
+
+		case 13: {
+
+			/*         |
+			 *         |
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 * --.-&#xB4;
+			 *   |
+			 *   |
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 1.0, 1.0 + d, 1.0 + d, left, offset, a1);
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 1.0 + d, left, offset, a2);
+
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+		case 14: {
+
+			/*         |
+			 *         .----
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 * ----&#xB4;
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 1.0, 1.0 + d, 1.0 + d, left, offset, a1);
+			calculateDiagonalArea(pattern, 1.0, 1.0, 1.0 + d, 0.0 + d, left, offset, a2);
+
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+		case 15: {
+
+			/*         |
+			 *         .----
+			 *       .-&#xB4;
+			 *     .-&#xB4;
+			 * --.-&#xB4;
+			 *   |
+			 *   |
+			 */
+
+			calculateDiagonalArea(pattern, 1.0, 1.0, 1.0 + d, 1.0 + d, left, offset, a1);
+			calculateDiagonalArea(pattern, 1.0, 0.0, 1.0 + d, 0.0 + d, left, offset, a2);
+
+			result[0] = (a1[0] + a2[0]) / 2.0;
+			result[1] = (a1[1] + a2[1]) / 2.0;
+
+			break;
+
+		}
+
+	}
+
+	return result;
+
+}
+
+/**
+ * Calculates orthogonal or diagonal patterns for a given offset.
+ *
+ * @private
+ * @param {RawImageData[]} patterns - The patterns to assemble.
+ * @param {Number|Float32Array} offset - A pattern offset. Diagonal offsets are pairs.
+ * @param {Boolean} orthogonal - Whether the patterns are orthogonal or diagonal.
+ */
+
+function generatePatterns(patterns, offset, orthogonal) {
+
+	const result = new Float32Array(2);
+
+	for(let i = 0, l = patterns.length; i &lt; l; ++i) {
+
+		const pattern = patterns[i];
+		const data = pattern.data;
+		const size = pattern.width;
+
+		for(let y = 0; y &lt; size; ++y) {
+
+			for(let x = 0; x &lt; size; ++x) {
+
+				if(orthogonal) {
+
+					calculateOrthogonalAreaForPattern(i, x, y, offset, result);
+
+				} else {
+
+					calculateDiagonalAreaForPattern(i, x, y, offset, result);
+
+				}
+
+				const c = (y * size + x) * 2;
+				data[c] = result[0] * 255;
+				data[c + 1] = result[1] * 255;
+
+			}
+
+		}
+
+	}
+
+}
+
+/**
+ * Assembles orthogonal or diagonal patterns into the final area image.
+ *
+ * @private
+ * @param {Number} baseX - The base X-position.
+ * @param {Number} baseY - The base Y-position.
+ * @param {RawImageData[]} patterns - The patterns to assemble.
+ * @param {Uint8Array[]} edges - Edge coordinate pairs, used for positioning.
+ * @param {Number} size - The pattern size.
+ * @param {Boolean} orthogonal - Whether the patterns are orthogonal or diagonal.
+ * @param {RawImageData} target - The target image data.
+ */
+
+function assemble(baseX, baseY, patterns, edges, size, orthogonal, target) {
+
+	const dstData = target.data;
+	const dstWidth = target.width;
+
+	for(let i = 0, l = patterns.length; i &lt; l; ++i) {
+
+		const edge = edges[i];
+		const pattern = patterns[i];
+
+		const srcData = pattern.data;
+		const srcWidth = pattern.width;
+
+		for(let y = 0; y &lt; size; ++y) {
+
+			for(let x = 0; x &lt; size; ++x) {
+
+				const pX = edge[0] * size + baseX + x;
+				const pY = edge[1] * size + baseY + y;
+
+				const c = (pY * dstWidth + pX) * 4;
+
+				/* The texture coordinates of orthogonal patterns are compressed
+				quadratically to reach longer distances for a given texture size. */
+				const d = orthogonal ? ((y * y * srcWidth + x * x) * 2) :
+					((y * srcWidth + x) * 2);
+
+				dstData[c] = srcData[d];
+				dstData[c + 1] = srcData[d + 1];
+				dstData[c + 2] = 0;
+				dstData[c + 3] = 255;
+
+			}
+
+		}
+
+	}
+
+}
+
+/**
+ * SMAA area image data.
+ *
+ * This texture allows to obtain the area for a certain pattern and distances
+ * to the left and to the right of the identified line.
+ *
+ * Based on the official python scripts:
+ *  https://github.com/iryoku/smaa/tree/master/Scripts
+ */
+
+export class SMAAAreaImageData {
+
+	/**
+	 * Creates a new area image.
+	 *
+	 * @return {RawImageData} The generated image data.
+	 */
+
+	static generate() {
+
+		const width = 2 * 5 * ORTHOGONAL_SIZE;
+		const height = orthogonalSubsamplingOffsets.length * 5 * ORTHOGONAL_SIZE;
+
+		const data = new Uint8ClampedArray(width * height * 4);
+		const result = new RawImageData(width, height, data);
+
+		const orthogonalPatternSize = Math.pow(ORTHOGONAL_SIZE - 1, 2) + 1;
+		const diagonalPatternSize = DIAGONAL_SIZE;
+
+		const orthogonalPatterns = [];
+		const diagonalPatterns = [];
+
+		for(let i = 3, l = data.length; i &lt; l; i += 4) {
+
+			data[i] = 255;
+
+		}
+
+		// Prepare 16 image data sets for the orthogonal and diagonal subtextures.
+		for(let i = 0; i &lt; 16; ++i) {
+
+			orthogonalPatterns.push(new RawImageData(orthogonalPatternSize, orthogonalPatternSize,
+				new Uint8ClampedArray(orthogonalPatternSize * orthogonalPatternSize * 2), 2));
+
+			diagonalPatterns.push(new RawImageData(diagonalPatternSize, diagonalPatternSize,
+				new Uint8ClampedArray(diagonalPatternSize * diagonalPatternSize * 2), 2));
+
+		}
+
+		for(let i = 0, l = orthogonalSubsamplingOffsets.length; i &lt; l; ++i) {
+
+			// Generate 16 orthogonal patterns for each offset.
+			generatePatterns(orthogonalPatterns, orthogonalSubsamplingOffsets[i], true);
+
+			// Assemble the orthogonal patterns and place them on the left side.
+			assemble(
+				0,
+				5 * ORTHOGONAL_SIZE * i,
+				orthogonalPatterns,
+				orthogonalEdges,
+				ORTHOGONAL_SIZE,
+				true,
+				result
+			);
+
+		}
+
+		for(let i = 0, l = diagonalSubsamplingOffsets.length; i &lt; l; ++i) {
+
+			// Generate 16 diagonal patterns for each offset.
+			generatePatterns(diagonalPatterns, diagonalSubsamplingOffsets[i], false);
+
+			// Assemble the diagonal patterns and place them on the right side.
+			assemble(
+				5 * ORTHOGONAL_SIZE,
+				4 * DIAGONAL_SIZE * i,
+				diagonalPatterns,
+				diagonalEdges,
+				DIAGONAL_SIZE,
+				false,
+				result
+			);
+
+		}
+
+		return result;
+
+	}
+
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

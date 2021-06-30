@@ -1,0 +1,156 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background-color: black;
+	color: rgb(175, 170, 160);
+	font-family: sans-serif;
+	line-height: 150%;
+	margin: 0;
+	min-height: 100vh;
+}
+
+a {
+	color: grey;
+	transition: color 0.2s;
+}
+
+a:hover, a:active {
+	color: white;
+}
+
+aside, footer {
+	position: absolute;
+	z-index: 1;
+}
+
+aside {
+	right: 0;
+	top: 0;
+}
+
+canvas {
+	display: block;
+	max-height: 100%;
+	max-width: 100%;
+}
+
+footer {
+	bottom: 0;
+	left: 0;
+}
+
+footer img {
+	cursor: pointer;
+	display: block;
+	opacity: 0.075;
+	transition: opacity 0.2s;
+}
+
+footer img:hover {
+	opacity: 0.25;
+}
+
+main {
+	height: 100%;
+}
+
+p {
+	margin: 0;
+}
+
+.progress * {
+	cursor: progress !important;
+}
+
+.warning a {
+	margin-top: 1em;
+}
+
+.loading, .warning {
+	align-items: center;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	user-select: none;
+}
+
+.loading > div,
+.loading > div > div {
+	border-radius: 6px;
+	box-sizing: border-box;
+	display: inline-block;
+	height: 4px;
+}
+
+.loading > div {
+	background: rgba(255, 255, 255, 0.1);
+	margin-top: 10px;
+	text-align: left;
+	width: 220px;
+}
+
+.loading > div > div {
+	background: rgba(255, 255, 255, 0.95);
+	transition: width 150ms;
+	vertical-align: top;
+	width: 0;
+}
+
+.warning {
+	background: black;
+}
+
+.github, .code, .info {
+	bottom: 15px;
+	position: absolute;
+}
+
+.code {
+	left: 50px;
+}
+
+.github {
+	left: 90px;
+}
+
+.info {
+	bottom: 12px;
+	left: 8px;
+}
+
+.info div {
+	bottom: 100%;
+	color: rgb(90, 95, 90);
+	font-size: 75%;
+	max-width: calc(100vw - 12px);
+	position: absolute;
+	width: max-content;
+}
+
+.lut {
+	cursor: auto;
+	left: 1em;
+	max-height: 72vh;
+	position: absolute;
+	top: 1em;
+}
+
+.dg {
+	user-select: none;
+}
+
+.dg select {
+	max-width: 100%;
+}
+
+.hidden {
+	display: none;
+}

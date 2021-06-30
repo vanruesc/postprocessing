@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/core/EffectComposer.js | postprocessing</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A post processing library that provides the means to implement image filter effects for three.js."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="postprocessing"><meta property="twitter:description" content="A post processing library that provides the means to implement image filter effects for three.js."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/vanruesc/postprocessing.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/EffectComposer.js~EffectComposer.html">EffectComposer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/OverrideMaterialManager.js~OverrideMaterialManager.html">OverrideMaterialManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Resizer.js~Resizer.html">Resizer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Selection.js~Selection.html">Selection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/core/Disposable.js~Disposable.html">Disposable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/core/Initializable.js~Initializable.html">Initializable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/src/core/Resizable.js~Resizable.html">Resizable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ColorChannel">ColorChannel</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#effects">effects</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/BloomEffect.js~BloomEffect.html">BloomEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/BokehEffect.js~BokehEffect.html">BokehEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/BrightnessContrastEffect.js~BrightnessContrastEffect.html">BrightnessContrastEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ChromaticAberrationEffect.js~ChromaticAberrationEffect.html">ChromaticAberrationEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ColorAverageEffect.js~ColorAverageEffect.html">ColorAverageEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ColorDepthEffect.js~ColorDepthEffect.html">ColorDepthEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/DepthEffect.js~DepthEffect.html">DepthEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/DepthOfFieldEffect.js~DepthOfFieldEffect.html">DepthOfFieldEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/DotScreenEffect.js~DotScreenEffect.html">DotScreenEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/Effect.js~Effect.html">Effect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/GammaCorrectionEffect.js~GammaCorrectionEffect.html">GammaCorrectionEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/GlitchEffect.js~GlitchEffect.html">GlitchEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/GodRaysEffect.js~GodRaysEffect.html">GodRaysEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/GridEffect.js~GridEffect.html">GridEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/HueSaturationEffect.js~HueSaturationEffect.html">HueSaturationEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/LUTEffect.js~LUTEffect.html">LUTEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/NoiseEffect.js~NoiseEffect.html">NoiseEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/OutlineEffect.js~OutlineEffect.html">OutlineEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/PixelationEffect.js~PixelationEffect.html">PixelationEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/RealisticBokehEffect.js~RealisticBokehEffect.html">RealisticBokehEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/SMAAEffect.js~SMAAEffect.html">SMAAEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/SSAOEffect.js~SSAOEffect.html">SSAOEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ScanlineEffect.js~ScanlineEffect.html">ScanlineEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/SelectiveBloomEffect.js~SelectiveBloomEffect.html">SelectiveBloomEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/SepiaEffect.js~SepiaEffect.html">SepiaEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ShockWaveEffect.js~ShockWaveEffect.html">ShockWaveEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/TextureEffect.js~TextureEffect.html">TextureEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/ToneMappingEffect.js~ToneMappingEffect.html">ToneMappingEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/VignetteEffect.js~VignetteEffect.html">VignetteEffect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EffectAttribute">EffectAttribute</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-WebGLExtension">WebGLExtension</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GlitchMode">GlitchMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SMAAPreset">SMAAPreset</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ToneMappingMode">ToneMappingMode</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#effects-blending">effects/blending</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/effects/blending/BlendMode.js~BlendMode.html">BlendMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BlendFunction">BlendFunction</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#images">images</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/RawImageData.js~RawImageData.html">RawImageData</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#images-lut">images/lut</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/lut/TetrahedralUpscaler.js~TetrahedralUpscaler.html">TetrahedralUpscaler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LUTOperation">LUTOperation</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#images-smaa">images/smaa</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/smaa/SMAAAreaImageData.js~SMAAAreaImageData.html">SMAAAreaImageData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/smaa/SMAAImageGenerator.js~SMAAImageGenerator.html">SMAAImageGenerator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/smaa/SMAASearchImageData.js~SMAASearchImageData.html">SMAASearchImageData</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#images-textures">images/textures</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/textures/LookupTexture3D.js~LookupTexture3D.html">LookupTexture3D</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/images/textures/NoiseTexture.js~NoiseTexture.html">NoiseTexture</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#loaders">loaders</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loaders/LUT3dlLoader.js~LUT3dlLoader.html">LUT3dlLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loaders/LUTCubeLoader.js~LUTCubeLoader.html">LUTCubeLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loaders/SMAAImageLoader.js~SMAAImageLoader.html">SMAAImageLoader</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#materials">materials</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/AdaptiveLuminanceMaterial.js~AdaptiveLuminanceMaterial.html">AdaptiveLuminanceMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/BokehMaterial.js~BokehMaterial.html">BokehMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/CircleOfConfusionMaterial.js~CircleOfConfusionMaterial.html">CircleOfConfusionMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/ColorEdgesMaterial.js~ColorEdgesMaterial.html">ColorEdgesMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/ConvolutionMaterial.js~ConvolutionMaterial.html">ConvolutionMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/CopyMaterial.js~CopyMaterial.html">CopyMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/DepthComparisonMaterial.js~DepthComparisonMaterial.html">DepthComparisonMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/DepthCopyMaterial.js~DepthCopyMaterial.html">DepthCopyMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/DepthDownsamplingMaterial.js~DepthDownsamplingMaterial.html">DepthDownsamplingMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/DepthMaskMaterial.js~DepthMaskMaterial.html">DepthMaskMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/EdgeDetectionMaterial.js~EdgeDetectionMaterial.html">EdgeDetectionMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/EffectMaterial.js~EffectMaterial.html">EffectMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/GodRaysMaterial.js~GodRaysMaterial.html">GodRaysMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/LuminanceMaterial.js~LuminanceMaterial.html">LuminanceMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/MaskMaterial.js~MaskMaterial.html">MaskMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/OutlineMaterial.js~OutlineMaterial.html">OutlineMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/SMAAWeightsMaterial.js~SMAAWeightsMaterial.html">SMAAWeightsMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/materials/SSAOMaterial.js~SSAOMaterial.html">SSAOMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-KernelSize">KernelSize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DepthCopyMode">DepthCopyMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EdgeDetectionMode">EdgeDetectionMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PredicationMode">PredicationMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Section">Section</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MaskFunction">MaskFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-OutlineEdgesMaterial">OutlineEdgesMaterial</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#passes">passes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/AdaptiveLuminancePass.js~AdaptiveLuminancePass.html">AdaptiveLuminancePass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/BlurPass.js~BlurPass.html">BlurPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/ClearMaskPass.js~ClearMaskPass.html">ClearMaskPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/ClearPass.js~ClearPass.html">ClearPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/DepthDownsamplingPass.js~DepthDownsamplingPass.html">DepthDownsamplingPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/DepthPass.js~DepthPass.html">DepthPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/DepthPickingPass.js~DepthPickingPass.html">DepthPickingPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/DepthSavePass.js~DepthSavePass.html">DepthSavePass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/EffectPass.js~EffectPass.html">EffectPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/LambdaPass.js~LambdaPass.html">LambdaPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/LuminancePass.js~LuminancePass.html">LuminancePass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/MaskPass.js~MaskPass.html">MaskPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/NormalPass.js~NormalPass.html">NormalPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/Pass.js~Pass.html">Pass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/RenderPass.js~RenderPass.html">RenderPass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/SavePass.js~SavePass.html">SavePass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/passes/ShaderPass.js~ShaderPass.html">ShaderPass</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/core/EffectComposer.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {
+	DepthStencilFormat,
+	DepthTexture,
+	LinearFilter,
+	RGBAFormat,
+	RGBFormat,
+	UnsignedByteType,
+	UnsignedIntType,
+	UnsignedInt248Type,
+	Vector2,
+	WebGLMultisampleRenderTarget,
+	WebGLRenderTarget
+} from &quot;three&quot;;
+
+import { ClearMaskPass, MaskPass, ShaderPass } from &quot;../passes&quot;;
+import { CopyMaterial } from &quot;../materials&quot;;
+
+/**
+ * The EffectComposer may be used in place of a normal WebGLRenderer.
+ *
+ * The auto clear behaviour of the provided renderer will be disabled to prevent
+ * unnecessary clear operations.
+ *
+ * It is common practice to use a {@link RenderPass} as the first pass to
+ * automatically clear the buffers and render a scene for further processing.
+ *
+ * @implements {Resizable}
+ * @implements {Disposable}
+ */
+
+export class EffectComposer {
+
+	/**
+	 * Constructs a new effect composer.
+	 *
+	 * @param {WebGLRenderer} renderer - The renderer that should be used.
+	 * @param {Object} [options] - The options.
+	 * @param {Boolean} [options.depthBuffer=true] - Whether the main render targets should have a depth buffer.
+	 * @param {Boolean} [options.stencilBuffer=false] - Whether the main render targets should have a stencil buffer.
+	 * @param {Boolean} [options.alpha] - Whether the main render targets should always be RGBA buffers.
+	 * @param {Number} [options.multisampling=0] - The number of samples used for multisample antialiasing. Requires WebGL 2.
+	 * @param {Number} [options.frameBufferType] - The type of the internal frame buffers. It&apos;s recommended to use HalfFloatType if possible.
+	 */
+
+	constructor(renderer = null, {
+		depthBuffer = true,
+		stencilBuffer = false,
+		alpha = false,
+		multisampling = 0,
+		frameBufferType
+	} = {}) {
+
+		/**
+		 * The renderer.
+		 *
+		 * @type {WebGLRenderer}
+		 * @private
+		 */
+
+		this.renderer = renderer;
+
+		/**
+		 * The input buffer.
+		 *
+		 * Reading from and writing to the same render target should be avoided.
+		 * Therefore, two seperate yet identical buffers are used.
+		 *
+		 * @type {WebGLRenderTarget}
+		 * @private
+		 */
+
+		this.inputBuffer = null;
+
+		/**
+		 * The output buffer.
+		 *
+		 * @type {WebGLRenderTarget}
+		 * @private
+		 */
+
+		this.outputBuffer = null;
+
+		if(this.renderer !== null) {
+
+			this.renderer.autoClear = false;
+			this.inputBuffer = this.createBuffer(depthBuffer, stencilBuffer, frameBufferType, multisampling);
+			this.outputBuffer = this.inputBuffer.clone();
+
+		}
+
+		/**
+		 * A copy pass used for copying masked scenes.
+		 *
+		 * @type {ShaderPass}
+		 * @private
+		 */
+
+		this.copyPass = new ShaderPass(new CopyMaterial());
+
+		/**
+		 * Indicates whether the frame buffers should use `RGBAFormat`.
+		 *
+		 * @type {Boolean}
+		 * @private
+		 */
+
+		this.alpha = alpha;
+
+		/**
+		 * A depth texture.
+		 *
+		 * @type {DepthTexture}
+		 * @private
+		 */
+
+		this.depthTexture = null;
+
+		/**
+		 * The passes.
+		 *
+		 * @type {Pass[]}
+		 * @private
+		 */
+
+		this.passes = [];
+
+		/**
+		 * Determines whether the last pass automatically renders to screen.
+		 *
+		 * @type {Boolean}
+		 */
+
+		this.autoRenderToScreen = true;
+
+	}
+
+	/**
+	 * The current amount of samples used for multisample antialiasing.
+	 *
+	 * @type {Number}
+	 */
+
+	get multisampling() {
+
+		return (this.inputBuffer instanceof WebGLMultisampleRenderTarget) ?
+			this.inputBuffer.samples : 0;
+
+	}
+
+	/**
+	 * Sets the amount of MSAA samples.
+	 *
+	 * Requires WebGL 2. Set to zero to disable multisampling.
+	 *
+	 * @type {Number}
+	 */
+
+	set multisampling(value) {
+
+		const buffer = this.inputBuffer;
+		const multisampling = this.multisampling;
+
+		if(multisampling &gt; 0 &amp;&amp; value &gt; 0) {
+
+			this.inputBuffer.samples = value;
+			this.outputBuffer.samples = value;
+
+		} else if(multisampling !== value) {
+
+			this.inputBuffer.dispose();
+			this.outputBuffer.dispose();
+
+			// Enable or disable MSAA.
+			this.inputBuffer = this.createBuffer(
+				buffer.depthBuffer,
+				buffer.stencilBuffer,
+				buffer.texture.type,
+				value
+			);
+
+			this.inputBuffer.depthTexture = this.depthTexture;
+			this.outputBuffer = this.inputBuffer.clone();
+
+		}
+
+	}
+
+	/**
+	 * Returns the WebGL renderer.
+	 *
+	 * You can replace the renderer with {@link EffectComposer#replaceRenderer}.
+	 *
+	 * @return {WebGLRenderer} The renderer.
+	 */
+
+	getRenderer() {
+
+		return this.renderer;
+
+	}
+
+	/**
+	 * Replaces the current renderer with the given one.
+	 *
+	 * The auto clear mechanism of the provided renderer will be disabled. If the
+	 * new render size differs from the previous one, all passes will be updated.
+	 *
+	 * By default, the DOM element of the current renderer will automatically be
+	 * removed from its parent node and the DOM element of the new renderer will
+	 * take its place.
+	 *
+	 * @param {WebGLRenderer} renderer - The new renderer.
+	 * @param {Boolean} updateDOM - Indicates whether the old canvas should be replaced by the new one in the DOM.
+	 * @return {WebGLRenderer} The old renderer.
+	 */
+
+	replaceRenderer(renderer, updateDOM = true) {
+
+		const oldRenderer = this.renderer;
+
+		if(oldRenderer !== null &amp;&amp; oldRenderer !== renderer) {
+
+			const oldSize = oldRenderer.getSize(new Vector2());
+			const newSize = renderer.getSize(new Vector2());
+			const parent = oldRenderer.domElement.parentNode;
+
+			this.renderer = renderer;
+			this.renderer.autoClear = false;
+
+			if(!oldSize.equals(newSize)) {
+
+				this.setSize();
+
+			}
+
+			if(updateDOM &amp;&amp; parent !== null) {
+
+				parent.removeChild(oldRenderer.domElement);
+				parent.appendChild(renderer.domElement);
+
+			}
+
+		}
+
+		return oldRenderer;
+
+	}
+
+	/**
+	 * Creates a depth texture attachment that will be provided to all passes.
+	 *
+	 * Note: When a shader reads from a depth texture and writes to a render
+	 * target that uses the same depth texture attachment, the depth information
+	 * will be lost. This happens even if `depthWrite` is disabled.
+	 *
+	 * @private
+	 * @return {DepthTexture} The depth texture.
+	 */
+
+	createDepthTexture() {
+
+		const depthTexture = this.depthTexture = new DepthTexture();
+
+		// Hack: Make sure the input buffer uses the depth texture.
+		this.inputBuffer.depthTexture = depthTexture;
+		this.inputBuffer.dispose();
+
+		if(this.inputBuffer.stencilBuffer) {
+
+			depthTexture.format = DepthStencilFormat;
+			depthTexture.type = UnsignedInt248Type;
+
+		} else {
+
+			depthTexture.type = UnsignedIntType;
+
+		}
+
+		return depthTexture;
+
+	}
+
+	/**
+	 * Deletes the current depth texture.
+	 *
+	 * @private
+	 */
+
+	deleteDepthTexture() {
+
+		if(this.depthTexture !== null) {
+
+			this.depthTexture.dispose();
+			this.depthTexture = null;
+
+			// Update the input buffer.
+			this.inputBuffer.depthTexture = null;
+			this.inputBuffer.dispose();
+
+			for(const pass of this.passes) {
+
+				pass.setDepthTexture(null);
+
+			}
+
+		}
+
+	}
+
+	/**
+	 * Creates a new render target by replicating the renderer&apos;s canvas.
+	 *
+	 * The created render target uses a linear filter for texel minification and
+	 * magnification. Its render texture format depends on whether the renderer
+	 * uses the alpha channel, unless the `alpha` constructor parameter was set
+	 * to `true`. Mipmaps are disabled.
+	 *
+	 * Note: The buffer format will also be set to RGBA if the frame buffer type
+	 * is HalfFloatType because RGB16F buffers are not renderable.
+	 *
+	 * @param {Boolean} depthBuffer - Whether the render target should have a depth buffer.
+	 * @param {Boolean} stencilBuffer - Whether the render target should have a stencil buffer.
+	 * @param {Number} type - The frame buffer type.
+	 * @param {Number} multisampling - The number of samples to use for antialiasing.
+	 * @return {WebGLRenderTarget} A new render target that equals the renderer&apos;s canvas.
+	 */
+
+	createBuffer(depthBuffer, stencilBuffer, type, multisampling) {
+
+		const renderer = this.renderer;
+		const context = renderer.getContext();
+		const size = renderer.getDrawingBufferSize(new Vector2());
+		const alpha = this.alpha || context.getContextAttributes().alpha;
+
+		const options = {
+			format: (!alpha &amp;&amp; type === UnsignedByteType) ? RGBFormat : RGBAFormat,
+			minFilter: LinearFilter,
+			magFilter: LinearFilter,
+			stencilBuffer,
+			depthBuffer,
+			type
+		};
+
+		const renderTarget = (multisampling &gt; 0) ?
+			new WebGLMultisampleRenderTarget(size.width, size.height, options) :
+			new WebGLRenderTarget(size.width, size.height, options);
+
+		if(multisampling &gt; 0) {
+
+			renderTarget.samples = multisampling;
+
+		}
+
+		renderTarget.texture.name = &quot;EffectComposer.Buffer&quot;;
+		renderTarget.texture.generateMipmaps = false;
+
+		return renderTarget;
+
+	}
+
+	/**
+	 * Adds a pass, optionally at a specific index.
+	 *
+	 * @param {Pass} pass - A new pass.
+	 * @param {Number} [index] - An index at which the pass should be inserted.
+	 */
+
+	addPass(pass, index) {
+
+		const passes = this.passes;
+		const renderer = this.renderer;
+
+		const drawingBufferSize = renderer.getDrawingBufferSize(new Vector2());
+		const alpha = renderer.getContext().getContextAttributes().alpha;
+		const frameBufferType = this.inputBuffer.texture.type;
+
+		pass.setSize(drawingBufferSize.width, drawingBufferSize.height);
+		pass.initialize(renderer, alpha, frameBufferType);
+
+		if(this.autoRenderToScreen) {
+
+			if(passes.length &gt; 0) {
+
+				passes[passes.length - 1].renderToScreen = false;
+
+			}
+
+			if(pass.renderToScreen) {
+
+				this.autoRenderToScreen = false;
+
+			}
+
+		}
+
+		if(index !== undefined) {
+
+			passes.splice(index, 0, pass);
+
+		} else {
+
+			passes.push(pass);
+
+		}
+
+		if(this.autoRenderToScreen) {
+
+			passes[passes.length - 1].renderToScreen = true;
+
+		}
+
+		if(pass.needsDepthTexture || this.depthTexture !== null) {
+
+			if(this.depthTexture === null) {
+
+				const depthTexture = this.createDepthTexture();
+
+				for(pass of passes) {
+
+					pass.setDepthTexture(depthTexture);
+
+				}
+
+			} else {
+
+				pass.setDepthTexture(this.depthTexture);
+
+			}
+
+		}
+
+	}
+
+	/**
+	 * Removes a pass.
+	 *
+	 * @param {Pass} pass - The pass.
+	 */
+
+	removePass(pass) {
+
+		const passes = this.passes;
+		const index = passes.indexOf(pass);
+		const exists = (index !== -1);
+		const removed = exists &amp;&amp; (passes.splice(index, 1).length &gt; 0);
+
+		if(removed) {
+
+			if(this.depthTexture !== null) {
+
+				// Check if the depth texture is still required.
+				const reducer = (a, b) =&gt; (a || b.needsDepthTexture);
+				const depthTextureRequired = passes.reduce(reducer, false);
+
+				if(!depthTextureRequired) {
+
+					if(pass.getDepthTexture() === this.depthTexture) {
+
+						pass.setDepthTexture(null);
+
+					}
+
+					this.deleteDepthTexture();
+
+				}
+
+			}
+
+			if(this.autoRenderToScreen) {
+
+				// Check if the removed pass was the last one.
+				if(index === passes.length) {
+
+					pass.renderToScreen = false;
+
+					if(passes.length &gt; 0) {
+
+						passes[passes.length - 1].renderToScreen = true;
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	/**
+	 * Removes all passes.
+	 */
+
+	removeAllPasses() {
+
+		const passes = this.passes;
+
+		this.deleteDepthTexture();
+
+		if(passes.length &gt; 0) {
+
+			if(this.autoRenderToScreen) {
+
+				passes[passes.length - 1].renderToScreen = false;
+
+			}
+
+			this.passes = [];
+
+		}
+
+	}
+
+	/**
+	 * Renders all enabled passes in the order in which they were added.
+	 *
+	 * @param {Number} deltaTime - The time since the last frame in seconds.
+	 */
+
+	render(deltaTime) {
+
+		const renderer = this.renderer;
+		const copyPass = this.copyPass;
+
+		let inputBuffer = this.inputBuffer;
+		let outputBuffer = this.outputBuffer;
+
+		let stencilTest = false;
+		let context, stencil, buffer;
+
+		for(const pass of this.passes) {
+
+			if(pass.enabled) {
+
+				pass.render(renderer, inputBuffer, outputBuffer, deltaTime, stencilTest);
+
+				if(pass.needsSwap) {
+
+					if(stencilTest) {
+
+						copyPass.renderToScreen = pass.renderToScreen;
+						context = renderer.getContext();
+						stencil = renderer.state.buffers.stencil;
+
+						// Preserve the unaffected pixels.
+						stencil.setFunc(context.NOTEQUAL, 1, 0xffffffff);
+						copyPass.render(renderer, inputBuffer, outputBuffer, deltaTime, stencilTest);
+						stencil.setFunc(context.EQUAL, 1, 0xffffffff);
+
+					}
+
+					buffer = inputBuffer;
+					inputBuffer = outputBuffer;
+					outputBuffer = buffer;
+
+				}
+
+				if(pass instanceof MaskPass) {
+
+					stencilTest = true;
+
+				} else if(pass instanceof ClearMaskPass) {
+
+					stencilTest = false;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	/**
+	 * Sets the size of the buffers and the renderer&apos;s output canvas.
+	 *
+	 * Every pass will be informed of the new size. It&apos;s up to each pass how that
+	 * information is used.
+	 *
+	 * If no width or height is specified, the render targets and passes will be
+	 * updated with the current size of the renderer.
+	 *
+	 * @param {Number} [width] - The width.
+	 * @param {Number} [height] - The height.
+	 * @param {Boolean} [updateStyle] - Determines whether the style of the canvas should be updated.
+	 */
+
+	setSize(width, height, updateStyle) {
+
+		const renderer = this.renderer;
+
+		if(width === undefined || height === undefined) {
+
+			const size = renderer.getSize(new Vector2());
+			width = size.width; height = size.height;
+
+		} else {
+
+			// Update the logical render size.
+			renderer.setSize(width, height, updateStyle);
+
+		}
+
+		// The drawing buffer size takes the device pixel ratio into account.
+		const drawingBufferSize = renderer.getDrawingBufferSize(new Vector2());
+
+		this.inputBuffer.setSize(drawingBufferSize.width, drawingBufferSize.height);
+		this.outputBuffer.setSize(drawingBufferSize.width, drawingBufferSize.height);
+
+		for(const pass of this.passes) {
+
+			pass.setSize(drawingBufferSize.width, drawingBufferSize.height);
+
+		}
+
+	}
+
+	/**
+	 * Resets this composer by deleting all passes and creating new buffers.
+	 */
+
+	reset() {
+
+		this.dispose();
+		this.autoRenderToScreen = true;
+
+	}
+
+	/**
+	 * Disposes this composer and all passes.
+	 */
+
+	dispose() {
+
+		for(const pass of this.passes) {
+
+			pass.dispose();
+
+		}
+
+		this.passes = [];
+
+		if(this.inputBuffer !== null) {
+
+			this.inputBuffer.dispose();
+
+		}
+
+		if(this.outputBuffer !== null) {
+
+			this.outputBuffer.dispose();
+
+		}
+
+		this.deleteDepthTexture();
+		this.copyPass.dispose();
+
+	}
+
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
